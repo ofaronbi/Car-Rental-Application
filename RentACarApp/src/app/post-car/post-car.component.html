@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>Put your car up for rent</h1>
+
+    <form [formGroup]="carForm" (ngSubmit)="postCar()">
+      <div class="d-flex align-content-md-stretch mb-3">
+        <div class="p-2">
+          <div class="mb-3">
+              <label for="image" class="form-label">Image: </label>
+              <input class="form-control" type="file" accept="image/*"  id="image" formControlName="image" (change)="onSelect($event)">
+          </div> 
+          <div class="mb-3">
+
+            <img [src]="imagePreview" style="width: 350px; border-radius: 5%;">
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="text" class="form-control" id="price" formControlName="price">
+          </div>
+        </div>
+        <div class="p-2" style="width: 350px;">
+          <div class="mb-3">
+            <label for="make" class="form-label">Make</label>
+            <input type="text" class="form-control" id="make" formControlName="make">
+          </div>
+          <div class="mb-3">
+            <label for="model" class="form-label">Model</label>
+            <input type="text" class="form-control" id="model" formControlName="model">
+          </div>
+          <div class="mb-3">
+            <label for="year" class="form-label">Year</label>
+            <input type="text" class="form-control" id="year" formControlName="year">
+          </div>
+          <div class="mb-3">
+            <label for="color" class="form-label">Color</label>
+            <input type="text" class="form-control" id="color" formControlName="color">
+          </div>
+          <div class="mb-3">
+            <label for="engine" class="form-label">Engine</label>
+            <input type="text" class="form-control" id="engine" formControlName="engine">
+          </div>
+          <div class="mb-3">
+            <label for="fuel" class="form-label">Fuel</label>
+            <input type="text" class="form-control" id="fuel" formControlName="fuel">
+          </div>
+          <div class="mb-3">
+            <label for="transmission" class="form-label">Transmission</label>
+            <input type="text" class="form-control" id="transmission" formControlName="transmission">
+          </div>
+         </div>
+      </div>
+          <button type="submit" class="btn btn-primary">Post your car</button>
+    </form>
+</div>
