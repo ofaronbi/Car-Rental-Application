@@ -1,0 +1,33 @@
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+.flex{
+    display: flex;
+    margin-bottom: 2rem;
+    /* border: 2px solid red; */
+}
+
+.first-half{
+    width: 100%;
+    
+}
+
+.size{
+    width: 100%;
+    padding-right: 0.3rem;
+}
+
+.small-size{
+    max-height: 14.80rem;
+    width: 100%;
+    margin-bottom: 0.3rem;
+    border-radius: 3%;
+}
+
+
+
+.second-half{
+    max-width: 22rem;
+}
