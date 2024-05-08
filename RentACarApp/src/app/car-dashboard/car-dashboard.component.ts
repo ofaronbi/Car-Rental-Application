@@ -5,9 +5,6 @@ import { DatePipe } from '@angular/common';
 import { Slider } from '../module/slider';
 
 
-
-
-
 @Component({
   selector: 'app-car-dashboard',
   templateUrl: './car-dashboard.component.html',

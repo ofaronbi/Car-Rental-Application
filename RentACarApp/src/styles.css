@@ -2,5 +2,11 @@
 *, ::before, ::after{
     box-sizing: border-box;
     margin: 0 auto;
+    font-family: "Roboto Slab", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: large;
 }
+
 

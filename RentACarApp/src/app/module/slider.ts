@@ -1,5 +1,3 @@
-
-
 export class Slider {
     private slide: number[] = [];
     private first: number = 0;
@@ -12,7 +10,7 @@ export class Slider {
     private valueSubscribers: Function[] = [];
   
     constructor() {
-      // Populate the slide initially
+      // Populate the slide
       this.populateSlide(this.carSize);
   
       // Schedule a task to update the slide and send the first number every 3 seconds

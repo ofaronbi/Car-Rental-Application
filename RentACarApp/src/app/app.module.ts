@@ -9,14 +9,16 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CarDashboardComponent } from './car-dashboard/car-dashboard.component'
 import { DatePipe } from '@angular/common';
-import { CarDetailsComponent } from './car-details/car-details.component'
+import { CarDetailsComponent } from './car-details/car-details.component';
+import { UpdateCarComponent } from './update-car/update-car.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostCarComponent,
     CarDashboardComponent,
-    CarDetailsComponent
+    CarDetailsComponent,
+    UpdateCarComponent
   ],
   imports: [
     BrowserModule,

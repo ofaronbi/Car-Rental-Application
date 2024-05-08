@@ -23,10 +23,18 @@ export class CarService {
     return this.httpClient.get<Car>(`${this.baseUrl}/cars?pageNumber=${page}&pageSize=${size}`)
   }
 
-
-  //http://localhost:8080/v1/api/car/{{carId}}
-  getCar(carId: number):Observable<Car>{
+  
+  getCarById(carId: number):Observable<Car>{
     return this.httpClient.get<Car>(`${this.baseUrl}/car/${carId}`)
   }
 
+  //http://localhost:8080/v1/api/update/car/{{carId}}
+  updateCar(carId: number, formData:any):Observable<Car>{
+    return this.httpClient.put<Car>(`${this.baseUrl}/update/car/${carId}`, formData);
+  }
+
+  //http://localhost:8080/v1/api/delete/car/{{carId}}
+  deleteCar(carId: number):Observable<Car>{
+    return this.httpClient.delete<Car>(`${this.baseUrl}/delete/car/${carId}`);
+  }
 }
