@@ -3,15 +3,18 @@ a{
     color: #000;
 }
 
+.background{
+    margin-top: 3.3em;
+    color: #e3e3e3;;
+    filter: drop-shadow(.25em .25em .15em);
+}
 .flex{
     display: flex;
     margin-bottom: 2rem;
-    /* border: 2px solid red; */
 }
 
 .first-half{
     width: 100%;
-    
 }
 
 .size{
@@ -20,14 +23,13 @@ a{
 }
 
 .small-size{
-    max-height: 14.80rem;
+    max-height: 13.1rem;
     width: 100%;
     margin-bottom: 0.3rem;
     border-radius: 3%;
 }
 
-
-
 .second-half{
     max-width: 22rem;
 }
+
