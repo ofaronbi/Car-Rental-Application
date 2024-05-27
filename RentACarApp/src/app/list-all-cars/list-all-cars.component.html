@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row row-cols-2 row-cols-md-4 g-auto">
+    <div class="col mb-3 " *ngFor="let car of cars">
+      <div class="card">
+        <a routerLink="/car/{{ car.carId }}"><img [src]="car.image" class="card-img-top" alt="..."></a>
+        <div class="card-body">
+          <div class="text-wrap" style="max-height: 3em; min-height: 3em; overflow:scroll;">
+            <a routerLink="/car/{{ car.carId }}">
+              <h5 class="card-title text">{{ car.year }} {{ car.make }} {{ car.model }}</h5>
+            </a>
+          </div>
+          <p class="card-text mt-2"> <span class="fw-semibold">Price: </span>
+            {{ car.price | currency: 'USD' }}</p>
+          <p class="card-text"><small class="text-muted">Last updated: {{ car.lastUpdated }} </small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <hr>
+  <div class="footer-container">
+    <div class="page">
+      <h6>Page: </h6>
+      <select name="" id="" [(ngModel)]="pageNumber" (change)="onPageNumberChange()">
+          <option *ngFor="let page of totalpage" [value]="page">{{page}}</option>
+      </select>
+    </div>
+
+    <div class="size">
+      <h6>Size: </h6>
+      <select name="" id="" [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+          <option *ngFor="let size of totalSize" [value]="size">{{size}}</option>
+      </select>
+    </div>
+  </div>
+</footer>

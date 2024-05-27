@@ -1,0 +1,33 @@
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+.container{
+    min-height: 82vh !important;
+    margin-top: .3em;
+    min-height: 99%;
+}
+
+.card{
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+hr{
+    color: #455d7a;
+}
+
+.page, .size{
+    display:inline-flex;
+    margin: 0 1.5rem 0 0;
+    gap: 0.5em;
+}
+
+.footer-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+select{
+    min-width: 3em;
+}

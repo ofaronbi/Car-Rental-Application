@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'RentACarApp';
+
+  initialPage: number = 1;
+  initialSize: number = 8;
 }
