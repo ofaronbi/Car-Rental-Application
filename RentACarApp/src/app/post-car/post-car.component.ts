@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Car } from '../module/car';
 import { CarService } from '../service/car.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-post-car',
@@ -11,20 +12,32 @@ import { Router } from '@angular/router';
 })
 export class PostCarComponent {
 
+  fileSize!:number;
+  priceValidator = /^\d+(\.\d{1,2})?$/;
+  tempFileSize = 0.02;
+  years: number[] = [];
+
+
   selectedFile!: File;
   imagePreview!: string | ArrayBuffer | null;
 
-  constructor(private carService: CarService, private router: Router){}
+  constructor(private carService: CarService, private router: Router){
+    let selectedYear = new Date().getFullYear()+1;
+    for(let year=selectedYear; year >=2010; year--){
+      this.years.push(year);
+    }
+
+  }
 
   carForm: FormGroup = new FormGroup({
-    make: new FormControl(''),
-    model: new FormControl(''),
-    year: new FormControl(''),
-    color: new FormControl(''),
-    engine: new FormControl(''),
-    fuel: new FormControl(''),
-    transmission: new FormControl(''),
-    price: new FormControl(null),
+    make: new FormControl('', [Validators.required]),
+    model: new FormControl('', [Validators.required]),
+    year: new FormControl('', [Validators.required]),
+    color: new FormControl('', [Validators.required]),
+    engine: new FormControl('', [Validators.required]),
+    fuel: new FormControl('', [Validators.required]),
+    transmission: new FormControl('', [Validators.required]),
+    price: new FormControl(null, [Validators.pattern(this.priceValidator), Validators.required]),
     image:  new FormControl('')
   })
 
@@ -54,13 +67,10 @@ export class PostCarComponent {
     formData.append('image', this.selectedFile);
 
     this.carService.postACar(formData).subscribe(()=>{
-
-      setInterval(()=>{
-        this.router.navigateByUrl("/car/dashboard");
-      }, 3000);
-      
+      const page = 1;
+      const size = 8
+      this.router.navigate(['cars', page, size]);
     })
-  
   }
 
 }

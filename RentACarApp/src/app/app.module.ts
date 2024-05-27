@@ -11,6 +11,7 @@ import { CarDashboardComponent } from './car-dashboard/car-dashboard.component'
 import { DatePipe } from '@angular/common';
 import { CarDetailsComponent } from './car-details/car-details.component';
 import { UpdateCarComponent } from './update-car/update-car.component';
+import { ListAllCarsComponent } from './list-all-cars/list-all-cars.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UpdateCarComponent } from './update-car/update-car.component';
     PostCarComponent,
     CarDashboardComponent,
     CarDetailsComponent,
-    UpdateCarComponent
+    UpdateCarComponent,
+    ListAllCarsComponent
   ],
   imports: [
     BrowserModule,

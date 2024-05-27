@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import { Slider } from '../module/slider';
 
 
+
 @Component({
   selector: 'app-car-dashboard',
   templateUrl: './car-dashboard.component.html',
@@ -22,7 +23,6 @@ export class CarDashboardComponent implements OnInit{
   secondValue!: number;
   thirdValue!: number;
   previousValue!: number;
-  carLength:number = 0;
 
 
   constructor(private carService : CarService, private datePipe: DatePipe){}
@@ -35,7 +35,7 @@ export class CarDashboardComponent implements OnInit{
         element.lastUpdated = this.dateFormat(element.lastUpdated);
         this.cars.push(element);
       });
-      this.slideShow(this.cars.length);
+      this.slideShow(this.cars?.length);
     });
   
   }

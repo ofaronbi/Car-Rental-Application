@@ -46,7 +46,7 @@ export class Slider {
     }
   
     private updateSlide(): void {
-      if (this.slide.length > 0) {
+      if (this.slide?.length > 0) {
         // Remove the second number
         this.previous = this.first;
         this.first = this.second;

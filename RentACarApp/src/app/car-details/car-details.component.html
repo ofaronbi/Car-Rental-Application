@@ -22,6 +22,6 @@
     <div class="container btn-style" *ngIf="car">
         <button type="submit" class="btn btn-outline-warning btn-md" routerLinkActive="active" routerLink="/update/{{car.carId}}">Update</button>
     
-        <button type="submit" class="btn btn-outline-danger btn-md" >Delete</button>
+        <button type="submit" class="btn btn-outline-danger btn-md" (click)="deleteCar()">Delete</button>
     </div>
 </div>

@@ -1,34 +1,43 @@
-.container-fluid{
-    max-width: 80%;
+a{
+    text-decoration: none;
+    margin-right: 1em;
 }
 
-.d-flex{
-    padding: 3px;
+div{
+    margin: 0;
 }
-
-.form-control {
-    width: 45rem;
-}
-
-img{
-    margin: 0.3em;
-}
-
 nav{
-    background-color: #455d7a;
+    margin: 0;
     padding: 0;
-    
-    
+    background-color: #455d7a;
 }
 
-.navbar{
-    margin-bottom: 50px;
+.nav{
+    padding: .3em;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    justify-content: center;
 }
 
-.nav-link:hover{
+.navbar-ul{
+    list-style-type: none;
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-link:hover{
+    transition: 0.5s ease-out;
     color: black;
 }
 
-.nav-link{
+.navbar-link{
     color: #e3e3e3;
+    
+}
+
+.navbar-search{
+    width: 52%;
+    margin: 0;
 }

@@ -14,7 +14,7 @@ export class CarDetailsComponent implements OnInit{
   car!: Car;
   returnedImage!: string | ArrayBuffer | null;
 
-  constructor(private carService: CarService, private router: ActivatedRoute){}
+  constructor(private carService: CarService, private router: ActivatedRoute, private route: Router){}
 
 
   ngOnInit(): void {
@@ -30,7 +30,11 @@ export class CarDetailsComponent implements OnInit{
     })
   }
 
-  updateCar(){
-    
+  deleteCar(){
+    this.carService.deleteCar(this.carId).subscribe(()=>{
+      const page = 1;
+      const size = 8
+      this.route.navigate(['cars', page, size]);
+    })
   }
 }
