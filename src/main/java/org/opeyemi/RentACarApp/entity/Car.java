@@ -1,12 +1,10 @@
 package org.opeyemi.RentACarApp.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.opeyemi.RentACarApp.dto.CarDto;
 
 import java.time.LocalDateTime;
 
@@ -33,10 +31,4 @@ public class Car {
 
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
-
-    @ManyToOne()
-    @JoinColumn(name = "ownerId")
-    @JsonIgnore
-    private Owner owner;
-
 }
