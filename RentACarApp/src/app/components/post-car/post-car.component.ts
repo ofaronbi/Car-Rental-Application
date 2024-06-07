@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { Car } from '../module/car';
-import { CarService } from '../service/car.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Car } from '../../module/car';
+import { CarService } from '../../service/car.service';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
@@ -10,12 +10,13 @@ import { Router } from '@angular/router';
   templateUrl: './post-car.component.html',
   styleUrls: ['./post-car.component.css']
 })
-export class PostCarComponent {
+export class PostCarComponent implements OnInit{
 
-  fileSize!:number;
-  priceValidator = /^\d+(\.\d{1,2})?$/;
-  tempFileSize = 0.02;
+  fileSize:number = 1024 * 1024; // 1 MB.
+  priceValidator = /^\d+(\.\d{1,2})?$/; // pattern to validate numbers up to two decimal places.
+  UploadFileSize = 0;
   years: number[] = [];
+  carForm!: FormGroup;
 
 
   selectedFile!: File;
@@ -28,24 +29,38 @@ export class PostCarComponent {
     }
 
   }
-
-  carForm: FormGroup = new FormGroup({
-    make: new FormControl('', [Validators.required]),
-    model: new FormControl('', [Validators.required]),
-    year: new FormControl('', [Validators.required]),
-    color: new FormControl('', [Validators.required]),
-    engine: new FormControl('', [Validators.required]),
-    fuel: new FormControl('', [Validators.required]),
-    transmission: new FormControl('', [Validators.required]),
-    price: new FormControl(null, [Validators.pattern(this.priceValidator), Validators.required]),
-    image:  new FormControl('')
-  })
+  ngOnInit(): void {
+    this.carForm = new FormGroup({
+      make: new FormControl('', [Validators.required]),
+      model: new FormControl('', [Validators.required]),
+      year: new FormControl('', [Validators.required]),
+      color: new FormControl('', [Validators.required]),
+      engine: new FormControl('', [Validators.required]),
+      fuel: new FormControl('', [Validators.required]),
+      transmission: new FormControl('', [Validators.required]),
+      price: new FormControl(null, [Validators.pattern(this.priceValidator), Validators.required]),
+      image:  new FormControl(null, [Validators.required, this.maxSizeValidator()])
+    })
+  }
 
   onSelect(event: any){
     this.selectedFile = event.target.files[0];
+    this.UploadFileSize = this.selectedFile.size;
+    console.log("Selected file name: ", this.selectedFile.name); 
+    console.log("Selected file size: ", this.selectedFile.size);
     this.previewImage();
+    this.carForm.get('image')?.updateValueAndValidity();
   }
   
+  maxSizeValidator(){
+    return () => {
+      if (this.UploadFileSize > this.fileSize) {
+        return { maxSize: true };
+      }
+      return null;
+    };
+  }
+
   previewImage(){
     const reader = new FileReader();
       reader.onload = () =>{
@@ -73,4 +88,5 @@ export class PostCarComponent {
     })
   }
 
+  
 }

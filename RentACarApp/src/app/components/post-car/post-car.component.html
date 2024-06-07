@@ -2,20 +2,21 @@
   <h1>Put your car up for rent</h1>
 
   <form [formGroup]="carForm" (ngSubmit)="postCar()">
-    <div class="mb-3">
+    <div class="mb-3 mt-5">
       <img [src]="imagePreview" style="width: 350px; border-radius: 5%;">
     </div>
 
     <div class="mb-3 image-upload">
       <div class="upload">
         <header>Drag & drop car image of 1 MB max.</header>
-        <span>Or</span>
-        <span>Browse car image</span>
+        <h6>Or</h6>
+        <h6>Browse car image</h6>
       </div>
       <div class="file-upload">
         <input type="file" accept="image/*" formControlName="image" (change)="onSelect($event)" class="file">
         <div class="error-message" *ngIf="carForm.get('image')?.invalid && carForm.get('image')?.dirty">
           <span *ngIf="carForm.get('image')?.errors?.['required']">Car image is required.</span>
+          <span *ngIf="carForm.get('image')?.errors?.['maxSize']">Car size must be less or equal to 1 mb.</span>
         </div>
       </div>
     </div>

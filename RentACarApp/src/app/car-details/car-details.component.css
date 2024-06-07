@@ -1,12 +1,13 @@
+.action{
+    text-align: end;
+    max-width: 87.5%;
+}
+
 .btn{
-    width: 6rem;
+    min-width: 6rem;
     margin-left: 1em;
 }
 
-.btn-style{
-    text-align: end;
-    max-width: 70%;
-}
 .details{
     max-width: 100%;
     line-height: 50px;
@@ -22,7 +23,7 @@ ul{
     padding: 0;
 }
 
-.style{
+.details-style{
     display: flex;
     max-height: 45rem;
     max-width: 70rem;
@@ -30,5 +31,5 @@ ul{
     justify-content: center;
     align-content: center;
     padding: 3rem 0 3rem 0;
-    
+    gap: 2em;
 }
