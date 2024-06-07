@@ -2,7 +2,7 @@
   <div class="row row-cols-2 row-cols-md-4 g-auto">
     <div class="col mb-3 " *ngFor="let car of cars">
       <div class="card">
-        <a routerLink="/car/{{ car.carId }}"><img [src]="car.image" class="card-img-top" alt="..."></a>
+        <a routerLink="/car/{{ car.carId }}"><img [src]="car.image" class="card-img-top" alt="Image photo"></a>
         <div class="card-body">
           <div class="text-wrap" style="max-height: 3em; min-height: 3em; overflow:scroll;">
             <a routerLink="/car/{{ car.carId }}">

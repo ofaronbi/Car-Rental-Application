@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from '../module/car';
-import { CarService } from '../service/car.service';
+import { Car } from '../../module/car';
+import { CarService } from '../../service/car.service';
 import { DatePipe } from '@angular/common';
-import { Slider } from '../module/slider';
+import { Slider } from '../../module/slider';
 
 
 

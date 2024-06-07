@@ -27,8 +27,8 @@ export class CarService {
     return this.httpClient.get<Car>(`${this.baseUrl}/car/${carId}`)
   }
 
-  updateCar(carId: number, formData:any):Observable<Car>{
-    return this.httpClient.put<Car>(`${this.baseUrl}/update/car/${carId}`, formData);
+  updateCar(carId: number, formData:any):Observable<any>{
+    return this.httpClient.put(`${this.baseUrl}/update/car/${carId}`, formData);
   }
 
   deleteCar(carId: number):Observable<Car>{

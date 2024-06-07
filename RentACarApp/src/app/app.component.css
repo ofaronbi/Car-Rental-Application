@@ -9,7 +9,7 @@ div{
 nav{
     margin: 0;
     padding: 0;
-    background-color: #455d7a;
+    background-color: #455d7a !important;
 }
 
 .nav{

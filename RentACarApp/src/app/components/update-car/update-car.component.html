@@ -1,0 +1,85 @@
+<div class="container">
+    <h1>Edit car details</h1>
+  
+    <form [formGroup]="updateCarForm" (ngSubmit)="updateCar()">
+      <div class="mb-3 mt-5">
+        <img [src]="existingCarImange" style="width: 350px; border-radius: 5%;">
+      </div>
+  
+      <div class="mb-3 image-upload">
+        <div class="upload">
+          <header>Drag & drop car image of 1 MB max.</header>
+          <h6>Or</h6>
+          <h6>Browse car image</h6>
+        </div>
+        <div class="file-upload">
+          <input type="file" accept="image/*" formControlName="image" (change)="onSelect($event)" class="file">
+          <div class="error-message" *ngIf="updateCarForm.get('image')?.invalid && updateCarForm.get('image')?.dirty">
+            <span *ngIf="updateCarForm.get('image')?.errors?.['maxSize']">Car size must be less or equal to 1 mb.</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="flex">
+        <div class="flex-size">
+          <div class="mb-3">
+            <input type="text" class="form-control" formControlName="make" placeholder="Make">
+            <div class="error-message" *ngIf="updateCarForm.get('make')?.invalid && updateCarForm.get('make')?.dirty">
+              <span *ngIf="updateCarForm.get('make')?.errors?.['required']">Car make is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="model" formControlName="model" placeholder="Model">
+            <div class="error-message" *ngIf="updateCarForm.get('model')?.invalid && updateCarForm.get('model')?.dirty">
+              <span *ngIf="updateCarForm.get('model')?.errors?.['required']">Car model is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <select class="form-select size" formControlName="year">
+              <option value="" disabled selected>Select year</option>
+              <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+            </select>
+            <div class="error-message" *ngIf="updateCarForm.get('year')?.invalid && updateCarForm.get('year')?.dirty">
+              <span *ngIf="updateCarForm.get('year')?.errors?.['required']">Car year is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="color" formControlName="color" placeholder="Color">
+            <div class="error-message" *ngIf="updateCarForm.get('color')?.invalid && updateCarForm.get('color')?.dirty">
+              <span *ngIf="updateCarForm.get('color')?.errors?.['required']">Car color is required.</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex-size">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="engine" formControlName="engine" placeholder="Engine">
+            <div class="error-message" *ngIf="updateCarForm.get('engine')?.invalid && updateCarForm.get('engine')?.dirty">
+              <span *ngIf="updateCarForm.get('engine')?.errors?.['required']">Car engine is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="fuel" formControlName="fuel" placeholder="Fuel">
+            <div class="error-message" *ngIf="updateCarForm.get('fuel')?.invalid && updateCarForm.get('fuel')?.dirty">
+              <span *ngIf="updateCarForm.get('fuel')?.errors?.['required']">Car fuel is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="transmission" formControlName="transmission"
+              placeholder="Transmission">
+            <div class="error-message" *ngIf="updateCarForm.get('transmission')?.invalid && updateCarForm.get('transmission')?.dirty">
+              <span *ngIf="updateCarForm.get('transmission')?.errors?.['required']">Car transmission is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" formControlName="price" placeholder="Price">
+            <div *ngIf="updateCarForm.get('price')?.invalid && updateCarForm.get('price')?.dirty" class="error-message">
+              <span *ngIf="updateCarForm.get('price')?.errors?.['required']">Car price is required.</span>
+              <span *ngIf="updateCarForm.get('price')?.errors?.['pattern']">Invalid price format.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Update car details</button>
+    </form>
+  </div>
+  
