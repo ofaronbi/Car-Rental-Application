@@ -58,17 +58,4 @@ public class CarController {
         return carService.getAllCars(searchText,pageable);
     }
 
-//    @GetMapping("/search")
-//    public Page<CarDto> findCarBySearchText(@RequestParam String searchText,
-//                                            @RequestParam(required = false) Integer pageNumber,
-//                                            @RequestParam(required = false) Integer pageSize){
-//        Pageable pageable;
-//        if (pageNumber != null && pageSize != null) {
-//            pageable = PageRequest.of(pageNumber, pageSize);
-//        } else {
-//            pageable = PageRequest.of(0, 10);
-//        }
-//        return carService.findCarBySearchText(searchText, pageable);
-//    }
-
 }
