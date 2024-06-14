@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from '../../module/car';
+import { Car } from '../module/car';
 import { CarService } from '../../service/car.service';
 import { DatePipe } from '@angular/common';
-import { Slider } from '../../module/slider';
-
+import { Slider } from '../module/slider';
 
 
 @Component({
@@ -17,8 +16,7 @@ export class CarDashboardComponent implements OnInit{
 
   cars:Car[] = [];
   pageNumber: number = 0;
-  pageSize: number = 10;
-
+  pageSize: number = 8;
   firstValue!: number;
   secondValue!: number;
   thirdValue!: number;
@@ -29,7 +27,7 @@ export class CarDashboardComponent implements OnInit{
 
 
   getAllCars(){
-    this.carService.getAllCars(this.pageNumber, this.pageSize).subscribe((data:any)=>{
+    this.carService.getAllCars('',this.pageNumber, this.pageSize).subscribe((data:any)=>{
       data.content.forEach((element:any) => {
         element.image = 'data:image/*;base64,' + element.returnedImage;
         element.lastUpdated = this.dateFormat(element.lastUpdated);

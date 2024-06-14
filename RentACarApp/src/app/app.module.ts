@@ -9,9 +9,10 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CarDashboardComponent } from './components/car-dashboard/car-dashboard.component'
 import { DatePipe } from '@angular/common';
-import { CarDetailsComponent } from './car-details/car-details.component';
+import { CarDetailsComponent } from './components/car-details/car-details.component';
 import { UpdateCarComponent } from './components/update-car/update-car.component';
 import { ListAllCarsComponent } from './components/list-all-cars/list-all-cars.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ListAllCarsComponent } from './components/list-all-cars/list-all-cars.c
     CarDashboardComponent,
     CarDetailsComponent,
     UpdateCarComponent,
-    ListAllCarsComponent
+    ListAllCarsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

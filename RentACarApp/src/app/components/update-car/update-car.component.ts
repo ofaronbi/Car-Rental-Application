@@ -49,15 +49,12 @@ export class UpdateCarComponent implements OnInit{
       const carDto = response;
       this.existingCarImange = 'data:image/*;base64,' + response.returnedImage;
       this.updateCarForm.patchValue(carDto);
-      console.log(carDto)
     })
   }
 
   onSelect(event: any){
     this.selectedFile = event.target.files[0];
     this.UploadFileSize = this.selectedFile.size;
-    console.log("Selected file name: ", this.selectedFile.name); 
-    console.log("Selected file size: ", this.selectedFile.size);
     this.previewImage();
     this.updateCarForm.get('image')?.updateValueAndValidity();
   }

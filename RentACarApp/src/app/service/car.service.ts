@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Car } from '../module/car';
+import { Car } from '../components/module/car';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -18,9 +18,9 @@ export class CarService {
   }
 
 
-  getAllCars(page: number, size: number):Observable<Car>{
-    return this.httpClient.get<Car>(`${this.baseUrl}/cars?pageNumber=${page}&pageSize=${size}`)
-  }
+  // getCars(page: number, size: number):Observable<Car>{
+  //   return this.httpClient.get<Car>(`${this.baseUrl}/cars?pageNumber=${page}&pageSize=${size}`)
+  // }
 
   
   getCarById(carId: number):Observable<Car>{
@@ -34,4 +34,18 @@ export class CarService {
   deleteCar(carId: number):Observable<Car>{
     return this.httpClient.delete<Car>(`${this.baseUrl}/delete/car/${carId}`);
   }
+  
+  
+  getAllCars(searchText: string='', page: number, size: number):Observable<Car>{
+
+    // if (searchText && searchText.trim() !== '') {
+    //   return this.httpClient.get<Car>(`${this.baseUrl}/cars?searchText=${searchText}&pageNumber=${page}&pageSize=${size}`);
+      
+    // }
+  
+    // return this.httpClient.get<Car>(`${this.baseUrl}/cars?pageNumber=${page}&pageSize=${size}`)
+
+    return this.httpClient.get<Car>(`${this.baseUrl}/cars?searchText=${searchText}&pageNumber=${page}&pageSize=${size}`);
+  }
+    
 }
