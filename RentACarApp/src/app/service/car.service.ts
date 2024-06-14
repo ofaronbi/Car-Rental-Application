@@ -17,11 +17,6 @@ export class CarService {
     return this.httpClient.post(`${this.baseUrl}/post/car`, formData)
   }
 
-
-  // getCars(page: number, size: number):Observable<Car>{
-  //   return this.httpClient.get<Car>(`${this.baseUrl}/cars?pageNumber=${page}&pageSize=${size}`)
-  // }
-
   
   getCarById(carId: number):Observable<Car>{
     return this.httpClient.get<Car>(`${this.baseUrl}/car/${carId}`)
@@ -37,13 +32,6 @@ export class CarService {
   
   
   getAllCars(searchText: string='', page: number, size: number):Observable<Car>{
-
-    // if (searchText && searchText.trim() !== '') {
-    //   return this.httpClient.get<Car>(`${this.baseUrl}/cars?searchText=${searchText}&pageNumber=${page}&pageSize=${size}`);
-      
-    // }
-  
-    // return this.httpClient.get<Car>(`${this.baseUrl}/cars?pageNumber=${page}&pageSize=${size}`)
 
     return this.httpClient.get<Car>(`${this.baseUrl}/cars?searchText=${searchText}&pageNumber=${page}&pageSize=${size}`);
   }
