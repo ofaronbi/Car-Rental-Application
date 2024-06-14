@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from '../module/car';
 import { CarService } from '../../service/car.service';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 

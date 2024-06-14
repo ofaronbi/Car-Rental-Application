@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from '../../service/car.service';
-import { Observable } from 'rxjs';
 import { Car } from '../module/car';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
