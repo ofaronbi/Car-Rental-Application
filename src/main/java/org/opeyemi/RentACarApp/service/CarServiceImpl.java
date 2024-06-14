@@ -72,9 +72,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Page<CarDto> getAllCars(Pageable pageable) {
-        return carRepository.findAll(pageable)
-                .map(carMapper::toDto);
+    public Page<CarDto> getAllCars(String searchText,Pageable pageable) {
+        if(searchText != null && !searchText.isEmpty()){
+            return carRepository.findCarBySearchText(searchText, pageable).map(carMapper::toDto);
+        }
+        return carRepository.findAll(pageable).map(carMapper::toDto);
     }
 
 }

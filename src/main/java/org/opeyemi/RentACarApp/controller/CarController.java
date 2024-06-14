@@ -30,7 +30,7 @@ public class CarController {
 
     @PutMapping("/update/car/{carId}")
     public ResponseEntity<CarDto> updateCar(@PathVariable Long carId,
-                                            @RequestBody CarDto carDto) throws IOException{
+                                            @ModelAttribute CarDto carDto) throws IOException{
         return carService.updateCar(carId, carDto);
     }
 
@@ -46,15 +46,29 @@ public class CarController {
 
 
     @GetMapping("/cars")
-    public Page<CarDto> getAllCars(@RequestParam(required = false) Integer pageNumber,
+    public Page<CarDto> getAllCars(@RequestParam(defaultValue = "") String searchText,
+                                   @RequestParam(required = false) Integer pageNumber,
                                    @RequestParam(required = false) Integer pageSize){
         Pageable pageable;
         if (pageNumber != null && pageSize != null) {
             pageable = PageRequest.of(pageNumber, pageSize);
         } else {
-            pageable = PageRequest.of(0, 10);
+            pageable = PageRequest.of(0, 8);
         }
-        return carService.getAllCars(pageable);
+        return carService.getAllCars(searchText,pageable);
     }
+
+//    @GetMapping("/search")
+//    public Page<CarDto> findCarBySearchText(@RequestParam String searchText,
+//                                            @RequestParam(required = false) Integer pageNumber,
+//                                            @RequestParam(required = false) Integer pageSize){
+//        Pageable pageable;
+//        if (pageNumber != null && pageSize != null) {
+//            pageable = PageRequest.of(pageNumber, pageSize);
+//        } else {
+//            pageable = PageRequest.of(0, 10);
+//        }
+//        return carService.findCarBySearchText(searchText, pageable);
+//    }
 
 }
