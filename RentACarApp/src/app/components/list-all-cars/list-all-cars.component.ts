@@ -39,9 +39,10 @@ export class ListAllCarsComponent implements OnInit{
   }
 
 
-  onSearchText(text:string){
+  onSearchText(){
+    this.pageNumber = 1;
+    this.pageSize = 8;
     this.cars = [];
-    this.searchText = text;
     this.allCars(this.searchText);
   }
 

@@ -7,7 +7,7 @@
     </div>
     <div class="navbar-search">
       <input class="form-control" type="search" placeholder="Search" aria-label="Search" 
-       #searchText (keyup)="onSearchText(searchText.value)">
+       [(ngModel)]='searchText' (keyup)="onSearchText()">
     </div>
 
     <ul class="navbar-ul">
