@@ -12,5 +12,5 @@ public interface CarService {
     ResponseEntity<CarDto> updateCar(Long carId, CarDto carDto) throws IOException;
     ResponseEntity<CarDto> deleteCar(Long id);
     ResponseEntity<CarDto> getCar(Long id);
-    Page<CarDto> getAllCars(Pageable pageable);
+    Page<CarDto> getAllCars(String searchText,Pageable pageable);
 }
