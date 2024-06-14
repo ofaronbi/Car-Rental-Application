@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../module/car';
-import { CarService } from '../service/car.service';
+import { CarService } from '../../service/car.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -10,9 +10,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CarDetailsComponent implements OnInit{
 
-  carId: number = this.router.snapshot.params['carId'];
+  carId: number = +this.router.snapshot.params['carId']!;
   car!: Car;
   returnedImage!: string | ArrayBuffer | null;
+  message:string = 'The home page cars can not be deleted!';
+  delete: boolean = false;
 
   constructor(private carService: CarService, private router: ActivatedRoute, private route: Router){}
 
@@ -31,10 +33,16 @@ export class CarDetailsComponent implements OnInit{
   }
 
   deleteCar(){
-    this.carService.deleteCar(this.carId).subscribe(()=>{
-      const page = 1;
-      const size = 8
-      this.route.navigate(['cars', page, size]);
-    })
+    if(this.carId >=5){
+      this.carService.deleteCar(this.carId).subscribe(()=>{
+        this.delete = true;
+        setTimeout(()=>{
+          const page = 1;
+          const size = 8
+          this.delete = false;
+          this.route.navigate(['cars', page, size]);
+        }, 2000);
+      })
+    }
   }
 }

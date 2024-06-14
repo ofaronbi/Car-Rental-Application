@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from '../../service/car.service';
 import { Observable } from 'rxjs';
-import { Car } from '../../module/car';
+import { Car } from '../module/car';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+
+const PAGE_SIZE_INCREMENT = 4;
+const MAX_PAGE_SIZE = 24;
 
 @Component({
   selector: 'app-list-all-cars',
@@ -12,33 +15,47 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ListAllCarsComponent implements OnInit{
 
-  pageNumber: number = this.router.snapshot.params['pageNumber'] || 1;
-  pageSize: number = this.router.snapshot.params['pageSize'] || 8;
+  pageNumber: number = 1;
+  pageSize: number = 8;
   cars: Car[] = []
   totalpage: number[] = [];
   totalSize: number[] = [];
+  searchText: string = '';
+  isEmpty: boolean = false;
 
   constructor(private carService:CarService, private datePipe:DatePipe, 
               private router:ActivatedRoute, private route: Router){
-                for(let size=this.pageSize; size<=24; size +=4){
+                for(let size=this.pageSize; size<=MAX_PAGE_SIZE; size +=PAGE_SIZE_INCREMENT){
                   this.totalSize.push(size);
                 }
               }
 
   ngOnInit(): void {
-    this.updateUrl();
+    this.router.params.subscribe((params) =>{
+      this.searchText = params['searchText'] || '';
+      this.pageNumber = params['page'] || 1;
+      this.pageSize = params['size'] || 8;
+      this.allCars();
+    })
   }
 
-  allCars(){
-    this.carService.getAllCars(this.pageNumber-1, this.pageSize).subscribe((data:any)=>{
+
+  onSearchText(text:string){
+    this.cars = [];
+    this.searchText = text;
+    this.allCars(this.searchText);
+  }
+
+  allCars(searchText: string = ''){
+    this.carService.getAllCars(searchText,this.pageNumber-1, this.pageSize).subscribe((data:any)=>{
       this.page(data.totalPages);
       this.cars = [];
       data.content.forEach((element:any)=>{
         element.image = 'data:image/*;base64,' + element.returnedImage;
         element.lastUpdated = this.dateFormater(element.lastUpdated);
         this.cars.push(element)
-      })
-    })
+      });
+    });
   }
 
 
@@ -66,7 +83,6 @@ export class ListAllCarsComponent implements OnInit{
   }
 
   updateUrl(){
-    this.route.navigate(['/cars', this.pageNumber, this.pageSize])
-    this.allCars()
+    this.route.navigate(['cars/', this.searchText, this.pageNumber, this.pageSize]);
   }
 }

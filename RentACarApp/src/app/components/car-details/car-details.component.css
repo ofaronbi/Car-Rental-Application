@@ -3,6 +3,15 @@
     max-width: 87.5%;
 }
 
+.alert{
+    left: 3.5%;
+    max-width: 60rem;
+}
+.bi{
+    max-height: 30px;
+    max-width: 30px;
+    margin-left: 35%;
+}
 .btn{
     min-width: 6rem;
     margin-left: 1em;

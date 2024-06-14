@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from '../../module/car';
+import { Car } from '../module/car';
 import { CarService } from '../../service/car.service';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class PostCarComponent implements OnInit{
 
   fileSize:number = 1024 * 1024; // 1 MB.
-  priceValidator = /^\d+(\.\d{1,2})?$/; // pattern to validate numbers up to two decimal places.
+  priceValidator = /^\d+$/; // pattern to validate numbers up to two decimal places.
   UploadFileSize = 0;
   years: number[] = [];
   carForm!: FormGroup;
@@ -46,8 +46,6 @@ export class PostCarComponent implements OnInit{
   onSelect(event: any){
     this.selectedFile = event.target.files[0];
     this.UploadFileSize = this.selectedFile.size;
-    console.log("Selected file name: ", this.selectedFile.name); 
-    console.log("Selected file size: ", this.selectedFile.size);
     this.previewImage();
     this.carForm.get('image')?.updateValueAndValidity();
   }

@@ -5,7 +5,7 @@ a{
 
 .container{
     min-height: 82vh !important;
-    margin-top: .3em;
+    margin-top: 3.6rem;
     min-height: 99%;
 }
 
@@ -13,13 +13,12 @@ a{
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
 }
 
-.card-img-top{
-    max-width: 18.4rem;
-    max-height: 10.4rem;
-}
-
 hr{
     color: #455d7a;
+}
+
+.card-img-top{
+    max-height: 9.196rem;
 }
 
 .page, .size{
@@ -39,4 +38,57 @@ hr{
 
 select{
     min-width: 3em;
+}
+
+
+
+/*************Nav-style**********/
+.navbar-fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; 
+  }
+
+.navbar-link, .navbar-logo{
+    margin-right: 1em;
+}
+
+div+.nav{
+    margin: 0;
+}
+nav{
+    margin: 0;
+    padding: 0;
+    background-color: #455d7a !important;
+}
+
+.nav{
+    padding: .3em;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    justify-content: center;
+}
+
+.navbar-ul{
+    list-style-type: none;
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-link:hover{
+    transition: 0.5s ease-out;
+    color: black;
+}
+
+.navbar-link{
+    color: #e3e3e3;
+    
+}
+
+.navbar-search{
+    width: 52%;
+    margin: 0;
 }
