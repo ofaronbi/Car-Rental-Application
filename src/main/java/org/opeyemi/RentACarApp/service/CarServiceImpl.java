@@ -61,6 +61,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public ResponseEntity<CarDto> deleteCar(Long carId) {
         carRepository.deleteById(carId);
+
         return ResponseEntity.noContent().build();
     }
 
