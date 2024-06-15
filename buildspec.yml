@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+    commands:
+      - echo Installing Maven
+      - yum install -y maven
+  pre_build:
+    commands:
+      - echo Entering the pre-build phase...
+      - echo Installing dependencies...
+      - mvn install
+  build:
+    commands:
+      - echo Entering the build phase...
+      - mvn clean package
+  post_build:
+    commands:
+      - echo Entering the post-build phase...
+      - echo Build completed.
+      - cp target/*.jar spring-boot-app.jar
+artifacts:
+  files:
+    - spring-boot-app.jar
