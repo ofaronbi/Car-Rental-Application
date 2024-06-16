@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class CarService {
 
 
-  private baseUrl = 'http://localhost:8080/v1/api'
+  private baseUrl = 'https://myrentalapp.azurewebsites.net/v1/api'
 
   constructor(private httpClient: HttpClient) { }
 
